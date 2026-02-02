@@ -179,7 +179,7 @@ hide:
 </style>
 
 <div class="hero">
-  <h1>Chora</h1>
+  <img src="assets/logo.png" alt="Chora" style="max-width: 350px; margin-bottom: 1rem;">
   <p class="tagline">The Python Library for Place-Based Computing</p>
   <p class="subtitle">Model place as experience, not just location</p>
   

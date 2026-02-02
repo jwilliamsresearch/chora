@@ -6,6 +6,8 @@ repo_name: jameswilliamsresearch/chora
 
 theme:
   name: material
+  logo: assets/logo.png
+  favicon: assets/logo.png
   palette:
     # Light mode
     - media: "(prefers-color-scheme: light)"
