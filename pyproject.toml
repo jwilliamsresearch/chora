@@ -1,0 +1,92 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "chora"
+version = "0.1.0"
+description = "A platial modelling library for representing human experience of place"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "James Williams" }
+]
+keywords = [
+    "gis",
+    "geospatial",
+    "place",
+    "platial",
+    "spatial",
+    "experience",
+    "affect",
+    "familiarity",
+    "liminality",
+    "encounter",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Typing :: Typed",
+]
+dependencies = [
+    "shapely>=2.0",
+    "numpy>=1.24",
+    "networkx>=3.0",
+]
+
+[project.optional-dependencies]
+neo4j = ["neo4j>=5.0"]
+postgis = ["psycopg[binary]>=3.0", "geoalchemy2>=0.14"]
+rdf = ["rdflib>=7.0"]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "hypothesis>=6.0",
+    "mypy>=1.0",
+    "ruff>=0.1.0",
+]
+docs = [
+    "sphinx>=7.0",
+    "sphinx-rtd-theme>=2.0",
+    "myst-parser>=2.0",
+]
+all = [
+    "chora[neo4j,postgis,rdf,dev,docs]",
+]
+
+[project.urls]
+Homepage = "https://github.com/jameswilliams/chora"
+Documentation = "https://chora.readthedocs.io"
+Repository = "https://github.com/jameswilliams/chora"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/chora"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-v --tb=short"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+strict = true
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
