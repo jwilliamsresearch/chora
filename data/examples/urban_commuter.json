@@ -1,0 +1,433 @@
+{
+    "dataset": "urban_commuter",
+    "description": "Two-week commuter pattern dataset showing routine formation and familiarity development",
+    "agent": {
+        "id": "commuter_001",
+        "demographics": {
+            "work_type": "office",
+            "transport": "mixed"
+        }
+    },
+    "places": [
+        {
+            "id": "home",
+            "name": "Home (Hackney)",
+            "type": "residence",
+            "coordinates": [
+                -0.0550,
+                51.5450
+            ],
+            "semantic_hints": {
+                "comfort": "high",
+                "daily_anchor": true
+            }
+        },
+        {
+            "id": "station_hackney",
+            "name": "Hackney Central Station",
+            "type": "transit",
+            "coordinates": [
+                -0.0560,
+                51.5470
+            ],
+            "semantic_hints": {
+                "transit_type": "overground",
+                "busy": "peak_hours"
+            }
+        },
+        {
+            "id": "station_shoreditch",
+            "name": "Shoreditch High Street",
+            "type": "transit",
+            "coordinates": [
+                -0.0750,
+                51.5230
+            ],
+            "semantic_hints": {
+                "transit_type": "overground",
+                "busy": "very"
+            }
+        },
+        {
+            "id": "office",
+            "name": "Tech Hub Office",
+            "type": "workplace",
+            "coordinates": [
+                -0.0780,
+                51.5210
+            ],
+            "semantic_hints": {
+                "work_type": "tech",
+                "social": "medium"
+            }
+        },
+        {
+            "id": "morning_coffee",
+            "name": "Ozone Coffee Roasters",
+            "type": "cafe",
+            "coordinates": [
+                -0.0770,
+                51.5220
+            ],
+            "semantic_hints": {
+                "coffee": "specialty",
+                "routine": true
+            }
+        },
+        {
+            "id": "lunch_spot",
+            "name": "Boxpark Shoreditch",
+            "type": "food_court",
+            "coordinates": [
+                -0.0755,
+                51.5235
+            ],
+            "semantic_hints": {
+                "variety": "high",
+                "social": "high",
+                "outdoor": "partial"
+            }
+        },
+        {
+            "id": "gym",
+            "name": "Third Space Gym",
+            "type": "fitness",
+            "coordinates": [
+                -0.0790,
+                51.5200
+            ],
+            "semantic_hints": {
+                "activity": "gym",
+                "routine": "MWF"
+            }
+        },
+        {
+            "id": "pub",
+            "name": "The Book Club",
+            "type": "bar",
+            "coordinates": [
+                -0.0810,
+                51.5260
+            ],
+            "semantic_hints": {
+                "social": "high",
+                "creative": true,
+                "frequency": "weekly"
+            }
+        }
+    ],
+    "weekly_pattern": {
+        "monday": [
+            {
+                "place": "home",
+                "time": "07:00",
+                "duration": 60,
+                "activity": "morning"
+            },
+            {
+                "place": "station_hackney",
+                "time": "08:05",
+                "duration": 5,
+                "activity": "transit"
+            },
+            {
+                "place": "station_shoreditch",
+                "time": "08:25",
+                "duration": 3,
+                "activity": "transit"
+            },
+            {
+                "place": "morning_coffee",
+                "time": "08:35",
+                "duration": 15,
+                "activity": "coffee"
+            },
+            {
+                "place": "office",
+                "time": "09:00",
+                "duration": 240,
+                "activity": "work"
+            },
+            {
+                "place": "lunch_spot",
+                "time": "13:00",
+                "duration": 45,
+                "activity": "lunch"
+            },
+            {
+                "place": "office",
+                "time": "14:00",
+                "duration": 240,
+                "activity": "work"
+            },
+            {
+                "place": "gym",
+                "time": "18:15",
+                "duration": 60,
+                "activity": "exercise"
+            },
+            {
+                "place": "home",
+                "time": "19:45",
+                "duration": 180,
+                "activity": "evening"
+            }
+        ],
+        "tuesday": [
+            {
+                "place": "home",
+                "time": "07:00",
+                "duration": 60,
+                "activity": "morning"
+            },
+            {
+                "place": "station_hackney",
+                "time": "08:05",
+                "duration": 5,
+                "activity": "transit"
+            },
+            {
+                "place": "station_shoreditch",
+                "time": "08:25",
+                "duration": 3,
+                "activity": "transit"
+            },
+            {
+                "place": "morning_coffee",
+                "time": "08:35",
+                "duration": 15,
+                "activity": "coffee"
+            },
+            {
+                "place": "office",
+                "time": "09:00",
+                "duration": 480,
+                "activity": "work"
+            },
+            {
+                "place": "home",
+                "time": "18:30",
+                "duration": 240,
+                "activity": "evening"
+            }
+        ],
+        "wednesday": [
+            {
+                "place": "home",
+                "time": "07:00",
+                "duration": 60,
+                "activity": "morning"
+            },
+            {
+                "place": "station_hackney",
+                "time": "08:05",
+                "duration": 5,
+                "activity": "transit"
+            },
+            {
+                "place": "station_shoreditch",
+                "time": "08:25",
+                "duration": 3,
+                "activity": "transit"
+            },
+            {
+                "place": "morning_coffee",
+                "time": "08:35",
+                "duration": 15,
+                "activity": "coffee"
+            },
+            {
+                "place": "office",
+                "time": "09:00",
+                "duration": 240,
+                "activity": "work"
+            },
+            {
+                "place": "lunch_spot",
+                "time": "13:00",
+                "duration": 45,
+                "activity": "lunch"
+            },
+            {
+                "place": "office",
+                "time": "14:00",
+                "duration": 240,
+                "activity": "work"
+            },
+            {
+                "place": "gym",
+                "time": "18:15",
+                "duration": 60,
+                "activity": "exercise"
+            },
+            {
+                "place": "home",
+                "time": "19:45",
+                "duration": 180,
+                "activity": "evening"
+            }
+        ],
+        "thursday": [
+            {
+                "place": "home",
+                "time": "07:00",
+                "duration": 60,
+                "activity": "morning"
+            },
+            {
+                "place": "station_hackney",
+                "time": "08:05",
+                "duration": 5,
+                "activity": "transit"
+            },
+            {
+                "place": "station_shoreditch",
+                "time": "08:25",
+                "duration": 3,
+                "activity": "transit"
+            },
+            {
+                "place": "morning_coffee",
+                "time": "08:35",
+                "duration": 15,
+                "activity": "coffee"
+            },
+            {
+                "place": "office",
+                "time": "09:00",
+                "duration": 480,
+                "activity": "work"
+            },
+            {
+                "place": "pub",
+                "time": "18:30",
+                "duration": 120,
+                "activity": "social"
+            },
+            {
+                "place": "home",
+                "time": "21:00",
+                "duration": 120,
+                "activity": "evening"
+            }
+        ],
+        "friday": [
+            {
+                "place": "home",
+                "time": "07:00",
+                "duration": 60,
+                "activity": "morning"
+            },
+            {
+                "place": "station_hackney",
+                "time": "08:05",
+                "duration": 5,
+                "activity": "transit"
+            },
+            {
+                "place": "station_shoreditch",
+                "time": "08:25",
+                "duration": 3,
+                "activity": "transit"
+            },
+            {
+                "place": "morning_coffee",
+                "time": "08:35",
+                "duration": 15,
+                "activity": "coffee"
+            },
+            {
+                "place": "office",
+                "time": "09:00",
+                "duration": 240,
+                "activity": "work"
+            },
+            {
+                "place": "lunch_spot",
+                "time": "13:00",
+                "duration": 45,
+                "activity": "lunch"
+            },
+            {
+                "place": "office",
+                "time": "14:00",
+                "duration": 180,
+                "activity": "work"
+            },
+            {
+                "place": "gym",
+                "time": "17:30",
+                "duration": 60,
+                "activity": "exercise"
+            },
+            {
+                "place": "home",
+                "time": "19:00",
+                "duration": 240,
+                "activity": "evening"
+            }
+        ]
+    },
+    "familiarity_progression": {
+        "week_1": {
+            "home": 0.95,
+            "office": 0.3,
+            "morning_coffee": 0.25,
+            "station_hackney": 0.5,
+            "station_shoreditch": 0.35,
+            "lunch_spot": 0.2,
+            "gym": 0.15,
+            "pub": 0.1
+        },
+        "week_2": {
+            "home": 0.96,
+            "office": 0.55,
+            "morning_coffee": 0.5,
+            "station_hackney": 0.7,
+            "station_shoreditch": 0.6,
+            "lunch_spot": 0.4,
+            "gym": 0.35,
+            "pub": 0.25
+        }
+    },
+    "detected_routines": [
+        {
+            "name": "morning_commute",
+            "sequence": [
+                "home",
+                "station_hackney",
+                "station_shoreditch",
+                "morning_coffee",
+                "office"
+            ],
+            "regularity": 0.9,
+            "typical_time": "08:00-09:00"
+        },
+        {
+            "name": "gym_routine",
+            "sequence": [
+                "office",
+                "gym",
+                "home"
+            ],
+            "regularity": 0.6,
+            "days": [
+                "monday",
+                "wednesday",
+                "friday"
+            ]
+        },
+        {
+            "name": "thursday_social",
+            "sequence": [
+                "office",
+                "pub",
+                "home"
+            ],
+            "regularity": 0.8,
+            "days": [
+                "thursday"
+            ]
+        }
+    ]
+}

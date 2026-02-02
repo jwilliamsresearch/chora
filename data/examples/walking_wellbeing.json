@@ -1,0 +1,187 @@
+{
+    "dataset": "walking_wellbeing",
+    "description": "Simulated GPS traces for a walking wellbeing study with affect annotations",
+    "agent": {
+        "id": "walker_001",
+        "demographics": {
+            "age_group": "30-40",
+            "activity_level": "moderate"
+        }
+    },
+    "places": [
+        {
+            "id": "home",
+            "name": "Home",
+            "type": "residence",
+            "coordinates": [
+                -0.0892,
+                51.5140
+            ],
+            "semantic_hints": {
+                "comfort": "high",
+                "privacy": "high"
+            }
+        },
+        {
+            "id": "victoria_park",
+            "name": "Victoria Park",
+            "type": "green_space",
+            "coordinates": [
+                -0.0380,
+                51.5365
+            ],
+            "semantic_hints": {
+                "greenery": "high",
+                "openness": "high",
+                "tranquility": "medium"
+            }
+        },
+        {
+            "id": "canal_path",
+            "name": "Regent's Canal Towpath",
+            "type": "path",
+            "coordinates": [
+                -0.0550,
+                51.5320
+            ],
+            "semantic_hints": {
+                "water": "present",
+                "linear": true,
+                "nature": "medium"
+            }
+        },
+        {
+            "id": "broadway_market",
+            "name": "Broadway Market",
+            "type": "market",
+            "coordinates": [
+                -0.0610,
+                51.5350
+            ],
+            "semantic_hints": {
+                "social": "high",
+                "commercial": "medium",
+                "vibrancy": "high"
+            }
+        },
+        {
+            "id": "london_fields",
+            "name": "London Fields",
+            "type": "green_space",
+            "coordinates": [
+                -0.0580,
+                51.5420
+            ],
+            "semantic_hints": {
+                "greenery": "high",
+                "social": "medium",
+                "lido": true
+            }
+        },
+        {
+            "id": "coffee_shop",
+            "name": "Climpson & Sons",
+            "type": "cafe",
+            "coordinates": [
+                -0.0620,
+                51.5348
+            ],
+            "semantic_hints": {
+                "coffee": "specialty",
+                "atmosphere": "cozy",
+                "social": "medium"
+            }
+        }
+    ],
+    "encounters": [
+        {
+            "place_id": "home",
+            "timestamp": "2024-01-15T07:30:00Z",
+            "activity": "morning_routine",
+            "duration_minutes": 45,
+            "affect": {
+                "valence": 0.6,
+                "arousal": 0.2
+            }
+        },
+        {
+            "place_id": "canal_path",
+            "timestamp": "2024-01-15T08:20:00Z",
+            "activity": "walking",
+            "duration_minutes": 25,
+            "affect": {
+                "valence": 0.7,
+                "arousal": 0.3
+            }
+        },
+        {
+            "place_id": "victoria_park",
+            "timestamp": "2024-01-15T08:50:00Z",
+            "activity": "walking",
+            "duration_minutes": 40,
+            "affect": {
+                "valence": 0.8,
+                "arousal": 0.4
+            }
+        },
+        {
+            "place_id": "coffee_shop",
+            "timestamp": "2024-01-15T09:35:00Z",
+            "activity": "coffee_break",
+            "duration_minutes": 20,
+            "affect": {
+                "valence": 0.75,
+                "arousal": 0.3
+            }
+        },
+        {
+            "place_id": "broadway_market",
+            "timestamp": "2024-01-15T10:00:00Z",
+            "activity": "browsing",
+            "duration_minutes": 35,
+            "affect": {
+                "valence": 0.65,
+                "arousal": 0.6
+            }
+        },
+        {
+            "place_id": "london_fields",
+            "timestamp": "2024-01-15T10:40:00Z",
+            "activity": "resting",
+            "duration_minutes": 30,
+            "affect": {
+                "valence": 0.85,
+                "arousal": 0.1
+            }
+        },
+        {
+            "place_id": "canal_path",
+            "timestamp": "2024-01-15T11:15:00Z",
+            "activity": "walking",
+            "duration_minutes": 20,
+            "affect": {
+                "valence": 0.75,
+                "arousal": 0.25
+            }
+        },
+        {
+            "place_id": "home",
+            "timestamp": "2024-01-15T11:40:00Z",
+            "activity": "return",
+            "duration_minutes": 60,
+            "affect": {
+                "valence": 0.7,
+                "arousal": 0.15
+            }
+        }
+    ],
+    "summary": {
+        "total_distance_km": 5.2,
+        "total_duration_minutes": 275,
+        "average_valence": 0.73,
+        "peak_wellbeing": {
+            "place": "london_fields",
+            "valence": 0.85
+        }
+    }
+}

@@ -179,3 +179,8 @@ class SpatialExtent(PlatialNode):
         """Create an extent from bounding box."""
         from shapely.geometry import box
         return cls(name=name, geometry=box(minx, miny, maxx, maxy), extent_type="area")
+    
+    @classmethod
+    def from_point(cls, lon: float, lat: float, name: str = "") -> SpatialExtent:
+        """Create a point extent. Alias for point() method."""
+        return cls.point(lon, lat, name)

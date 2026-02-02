@@ -41,6 +41,7 @@ dependencies = [
     "shapely>=2.0",
     "numpy>=1.24",
     "networkx>=3.0",
+    "click>=8.0",
 ]
 
 [project.optional-dependencies]
@@ -74,6 +75,9 @@ all = [
 Homepage = "https://github.com/jameswilliams/chora"
 Documentation = "https://chora.readthedocs.io"
 Repository = "https://github.com/jameswilliams/chora"
+
+[project.scripts]
+chora = "chora.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/chora"]
