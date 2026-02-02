@@ -27,6 +27,8 @@ python examples/basic_walk.py
 |---------|-------------|
 | `load_gpx_traces.py` | Parse GPX files, detect stops |
 | `load_geojson_pois.py` | Load OSM/Overture GeoJSON POIs |
+| `server_demo.py` | **Phase 2**: Run the Chora API Server and simulate client requests. |
+| `vector_search.py` | **Phase 2**: Semantic search for places using "vibe" (Embeddings). |
 | `place_diary.py` | Experience sampling/diary CSV data |
 
 ## Queries & Utilities

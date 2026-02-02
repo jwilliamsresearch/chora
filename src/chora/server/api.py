@@ -88,7 +88,16 @@ async def log_encounter(enc: EncounterCreate):
     # Must add to graph
     graph_adapter.add_node(encounter)
     
-    @router.post("/vectors/embed", response_model=List[float])
+    # Link
+    graph_adapter.add_edge(PlatialEdge.participates_in(enc.agent_id, encounter.id))
+    graph_adapter.add_edge(PlatialEdge.occurs_at(encounter.id, enc.extent_id))
+
+    # Broadcast event
+    await manager.broadcast(f"New Encounter: Agent {enc.agent_id} at {enc.extent_id}")
+    
+    return str(encounter.id)
+
+@router.post("/vectors/embed", response_model=List[float])
 async def create_embedding(text: str):
     """
     Get the vector embedding for a text string.
@@ -97,11 +106,6 @@ async def create_embedding(text: str):
     from chora.embeddings import get_embedding_model
     model = get_embedding_model()
     return model.embed_text(text)
-    
-    # Broadcast event
-    await manager.broadcast(f"New Encounter: Agent {enc.agent_id} at {enc.extent_id}")
-    
-    return str(encounter.id)
 
 @router.get("/places/{agent_id}/{extent_id}", response_model=PlaceResponse)
 async def get_emergent_place(agent_id: str, extent_id: str):
