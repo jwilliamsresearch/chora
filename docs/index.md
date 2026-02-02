@@ -13,32 +13,76 @@ hide:
 }
 
 .hero {
-  background: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
-  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #0d9488 0%, #0891b2 50%, #6366f1 100%);
+  padding: 5rem 2rem;
   text-align: center;
   color: white;
   margin-bottom: 3rem;
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 800;
   margin: 0;
   color: white;
+  letter-spacing: -0.02em;
 }
 
-.hero p {
-  font-size: 1.3rem;
+.hero .tagline {
+  font-size: 1.5rem;
   opacity: 0.95;
   margin-top: 1rem;
   color: white;
+  font-weight: 300;
+}
+
+.hero .subtitle {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.hero-btn.primary {
+  background: white;
+  color: #0d9488;
+}
+
+.hero-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.hero-btn.secondary {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.hero-btn.secondary:hover {
+  background: rgba(255,255,255,0.25);
 }
 
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
-  padding: 2rem;
+  padding: 0 2rem 3rem;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -46,36 +90,37 @@ hide:
 .bento-card {
   background: var(--md-default-bg-color);
   border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 2rem;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .bento-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
   border-color: var(--md-primary-fg-color);
 }
 
 .bento-card h3 {
   margin-top: 0;
   color: var(--md-primary-fg-color);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .bento-card.featured {
   grid-column: span 2;
-  background: linear-gradient(135deg, rgba(13, 148, 136, 0.1) 0%, rgba(8, 145, 178, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%);
 }
 
 .badge {
   display: inline-block;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
   background: var(--md-primary-fg-color);
   color: white;
 }
@@ -84,9 +129,40 @@ hide:
   background: var(--md-code-bg-color);
   border-radius: 8px;
   padding: 1rem;
-  font-family: monospace;
-  font-size: 0.9rem;
+  font-family: var(--md-code-font-family);
+  font-size: 0.85rem;
   margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.install-box {
+  background: #1a1a2e;
+  color: #e2e8f0;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-family: var(--md-code-font-family);
+  font-size: 1rem;
+  display: inline-block;
+  margin-top: 1.5rem;
+}
+
+.install-box code {
+  color: #22d3ee;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.feature-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.feature-list li:last-child {
+  border-bottom: none;
 }
 
 @media (max-width: 768px) {
@@ -96,13 +172,26 @@ hide:
   .hero h1 {
     font-size: 2.5rem;
   }
+  .hero .tagline {
+    font-size: 1.2rem;
+  }
 }
 </style>
 
 <div class="hero">
   <h1>Chora</h1>
-  <p>The Operating System for Human-Centric Social Physics</p>
-  <p><em>Model place as experience, not location</em></p>
+  <p class="tagline">The Python Library for Place-Based Computing</p>
+  <p class="subtitle">Model place as experience, not just location</p>
+  
+  <div class="hero-buttons">
+    <a href="getting_started/" class="hero-btn primary">Get Started →</a>
+    <a href="guides/" class="hero-btn secondary">View Guides</a>
+    <a href="https://github.com/jameswilliamsresearch/chora" class="hero-btn secondary">GitHub</a>
+  </div>
+  
+  <div class="install-box">
+    <code>pip install chora</code>
+  </div>
 </div>
 
 <div class="bento-grid">
@@ -110,89 +199,104 @@ hide:
   <div class="bento-card featured">
     <h3>🎯 What is Chora?</h3>
     <p>Chora is the first Python library to model <strong>the human experience of place</strong>. Unlike standard GIS which asks <em>"What is at coordinates X,Y?"</em>, Chora asks <em>"Why does this park feel like Home to Alice, but Danger to Bob?"</em></p>
-    <p>Chora treats <strong>place</strong> as an emergent phenomenon—arising from memory, habit, emotion, and social interaction—rather than a static polygon on a map.</p>
+    <p>Place isn't a polygon—it's an emergent phenomenon arising from <strong>memory, habit, emotion, and social interaction</strong>.</p>
+    <div style="margin-top: 1.5rem;">
+      <span class="badge">Encounters</span>
+      <span class="badge">Familiarity</span>
+      <span class="badge">Practices</span>
+      <span class="badge">Affect</span>
+      <span class="badge">H3 Indexing</span>
+      <span class="badge">LLM Integration</span>
+    </div>
   </div>
 
   <div class="bento-card">
-    <h3>📚 Core Concepts</h3>
-    <p><span class="badge">Encounters</span> Atomic events in space-time</p>
-    <p><span class="badge">Familiarity</span> Memory that decays without reinforcement</p>
-    <p><span class="badge">Practices</span> Routines & rituals detected from patterns</p>
-    <p><span class="badge">Affect</span> Emotional valence of experiences</p>
-    <a href="core_concepts/">→ Learn the fundamentals</a>
-  </div>
-
-  <div class="bento-card">
-    <h3>⚡ Quick Start</h3>
+    <h3>⚡ Quick Example</h3>
     <div class="code-example">
-pip install chora<br>
-<br>
-# Model Alice visiting a park<br>
-from chora.core import *<br>
+from chora.core import *<br><br>
+# Create a platial graph<br>
 graph = PlatialGraph("City")<br>
 alice = Agent.individual("Alice")<br>
-park = SpatialExtent.from_bounds(...)<br>
-<br>
+park = SpatialExtent.from_point(-0.1, 51.5, "Park")<br><br>
+# Record an encounter<br>
+enc = Encounter(agent_id=alice.id, extent_id=park.id)<br>
+graph.add_node(enc)<br><br>
 # Derive familiarity over time<br>
-place = extract_place(graph, park.id)
+update_familiarity(graph, enc)
     </div>
-    <a href="getting_started/">→ Get started</a>
+    <a href="getting_started/" style="margin-top: 1rem; display: inline-block;">→ Full tutorial</a>
   </div>
 
   <div class="bento-card">
-    <h3>🌐 Real-Time API</h3>
-    <p>Phase 2 delivers a <strong>FastAPI server</strong> with WebSocket streaming, vector embeddings for semantic search, and Redis caching.</p>
-    <div class="code-example">
-POST /agents/<br>
-POST /encounters/<br>
-GET /places/{agent}/{extent}<br>
-WS /ws/stream
-    </div>
-    <a href="api_reference/#server-module-choraserver">→ API Reference</a>
+    <h3>📚 Guides</h3>
+    <ul class="feature-list">
+      <li><a href="guides/gps-to-places/">GPS to Places</a> — Process traces into meaningful places</li>
+      <li><a href="guides/affective-mapping/">Affective Mapping</a> — Map emotions to locations</li>
+      <li><a href="guides/practice-detection/">Detecting Routines</a> — Find habits & patterns</li>
+      <li><a href="guides/visualization/">Visualization</a> — D3.js graphs & reports</li>
+      <li><a href="guides/h3-indexing/">H3 Indexing</a> — Hexagonal spatial analysis</li>
+    </ul>
   </div>
 
   <div class="bento-card">
-    <h3>🔬 Theory</h3>
-    <p>Chora embodies formal theory from GIScience, cognitive geography, and social physics:</p>
-    <ul>
-      <li>Relational primacy</li>
-      <li>Encounter-centric modeling</li>
-      <li>Temporal decay functions</li>
-      <li>Epistemic separation</li>
+    <h3>🔬 Theoretical Foundation</h3>
+    <p>Built on rigorous theory from GIScience, cognitive geography, and social physics:</p>
+    <ul class="feature-list">
+      <li><strong>Relational primacy</strong> — Places defined by relations, not coordinates</li>
+      <li><strong>Encounter-centric</strong> — Atomic events as foundation</li>
+      <li><strong>Temporal decay</strong> — Memory fades without reinforcement</li>
+      <li><strong>Epistemic separation</strong> — Different agents, different places</li>
     </ul>
     <a href="theory/">→ Read the theory</a>
   </div>
 
   <div class="bento-card">
-    <h3>🧪 Examples</h3>
-    <p>Production-ready examples demonstrating real-world applications:</p>
-    <ul>
-      <li>Urban mobility analysis</li>
-      <li>Affective mapping</li>
-      <li>GPS trace processing</li>
-      <li>Semantic vector search</li>
-    </ul>
-    <a href="https://github.com/jameswilliams/chora/tree/master/examples">→ Browse examples</a>
+    <h3>🛠️ CLI Tool</h3>
+    <div class="code-example">
+# Load GPS data<br>
+chora load gpx trace.gpx --agent alice<br><br>
+# Derive familiarity<br>
+chora derive familiarity --agent alice<br><br>
+# Find routines<br>
+chora derive practices --agent alice<br><br>
+# Visualize<br>
+chora viz export --format d3 -o graph.html
+    </div>
+    <a href="api_reference/">→ CLI reference</a>
+  </div>
+
+  <div class="bento-card">
+    <h3>🔍 Vibe Search</h3>
+    <p>Find places by semantic description using vector embeddings:</p>
+    <div class="code-example">
+from chora.search import vibe_search<br><br>
+results = vibe_search(<br>
+    graph,<br>
+    "quiet peaceful park for reading"<br>
+)<br><br>
+# Returns: [(park, 0.87), (garden, 0.72), ...]
+    </div>
+    <a href="guides/affective-mapping/#step-3-vibe-search-with-embeddings">→ Learn vibe search</a>
   </div>
 
   <div class="bento-card featured">
     <h3>🗺️ Roadmap</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
       <div>
-        <strong>v0.5 (Q1 '26)</strong> ✅<br>
-        <small>Core, Tests, Docs, CI/CD</small>
+        <strong>v0.5</strong> ✅<br>
+        <small>Core, Tests, CI/CD, Docs</small>
       </div>
       <div>
-        <strong>v0.9 (Q2 '26)</strong> ✅<br>
-        <small>API, WebSockets, Embeddings</small>
+        <strong>v0.9</strong> ✅<br>
+        <small>CLI, Notebooks, Visualization</small>
       </div>
       <div>
-        <strong>v1.0 (Q3 '26)</strong><br>
-        <small>Social Physics, Frontend</small>
+        <strong>v1.0</strong> ✅<br>
+        <small>H3, Embeddings, LLM, Streaming</small>
       </div>
       <div>
-        <strong>v2.0 (2027+)</strong><br>
-        <small>LLMs, Simulation, Digital Twins</small>
+        <strong>v2.0</strong> 🚧<br>
+        <small>Social Physics, Digital Twins</small>
       </div>
     </div>
   </div>
@@ -201,7 +305,7 @@ WS /ws/stream
 
 ---
 
-<p style="text-align: center; margin-top: 3rem; opacity: 0.7;">
-  <strong>Built for the Platial Turn.</strong><br>
-  Open Source • MIT License • <a href="https://github.com/jameswilliams/chora">GitHub</a>
+<p style="text-align: center; margin: 3rem 0; opacity: 0.7;">
+  <strong>Built for the Platial Turn</strong><br>
+  Open Source • MIT License • <a href="https://github.com/jameswilliamsresearch/chora">GitHub</a>
 </p>

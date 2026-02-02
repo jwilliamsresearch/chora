@@ -1,9 +1,8 @@
 site_name: Chora
 site_description: A Platial Modelling Library for Python.
-site_url: https://jameswilliams.github.io/chora/
-repo_url: https://github.com/jameswilliams/chora
-repo_name: jameswilliams/chora
-edit_uri: edit/main/docs/
+site_url: https://jameswilliamsresearch.github.io/chora/
+repo_url: https://github.com/jameswilliamsresearch/chora
+repo_name: jameswilliamsresearch/chora
 
 theme:
   name: material
@@ -29,7 +28,11 @@ theme:
     - navigation.tracking
     - navigation.sections
     - navigation.expand
+    - navigation.indexes
     - content.code.copy
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
 
 plugins:
   - search
@@ -42,9 +45,16 @@ plugins:
 
 nav:
   - Home: index.md
-  - Theory: theory.md
   - Getting Started: getting_started.md
   - Core Concepts: core_concepts.md
+  - Theory: theory.md
+  - Guides:
+      - guides/index.md
+      - GPS to Places: guides/gps-to-places.md
+      - Affective Mapping: guides/affective-mapping.md
+      - Detecting Routines: guides/practice-detection.md
+      - Visualization: guides/visualization.md
+      - H3 Indexing: guides/h3-indexing.md
   - Derivation: derivation.md
   - Querying: queries.md
   - API Reference: api_reference.md
@@ -56,8 +66,16 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
-  - admonition
-  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
