@@ -121,10 +121,130 @@ class Neo4jAdapter(GraphAdapter):
         }
         tx.run(query, params)
     
-    # Required abstract methods implementation (stubs for valid class)
-    def get_node(self, node_id: NodeId) -> PlatialNode: raise NotImplementedError
-    def delete_node(self, node_id: NodeId) -> None: raise NotImplementedError
-    def get_edge(self, edge_id: EdgeId) -> PlatialEdge: raise NotImplementedError
-    def delete_edge(self, edge_id: EdgeId) -> None: raise NotImplementedError 
-    def query_nodes(self, **criteria) -> Iterator[PlatialNode]: yield from []
-    def query_edges(self, **criteria) -> Iterator[PlatialEdge]: yield from []
+    # Required abstract methods implementation
+    def get_node(self, node_id: NodeId) -> PlatialNode:
+        """Retrieve a node by ID."""
+        if not self._driver:
+            raise ConnectionError("Not connected")
+        
+        with self._driver.session() as session:
+            result = session.run(
+                "MATCH (n {id: $id}) RETURN n, labels(n) as labels",
+                {"id": str(node_id)}
+            )
+            record = result.single()
+            if not record:
+                raise NodeNotFoundError(f"Node {node_id} not found")
+            
+            # Reconstruct PlatialNode from properties
+            # This is a simplified version - full implementation would use a factory
+            node_data = dict(record["n"])
+            labels = record["labels"]
+            
+            from chora.core.node import PlatialNode
+            return PlatialNode.from_dict({
+                "id": node_data.get("id"),
+                "name": node_data.get("name"),
+                "node_type": labels[0] if labels else "UNKNOWN"
+            })
+    
+    def delete_node(self, node_id: NodeId) -> None:
+        """Delete a node by ID."""
+        if not self._driver:
+            raise ConnectionError("Not connected")
+        
+        with self._driver.session() as session:
+            session.run(
+                "MATCH (n {id: $id}) DETACH DELETE n",
+                {"id": str(node_id)}
+            )
+    
+    def get_edge(self, edge_id: EdgeId) -> PlatialEdge:
+        """Retrieve an edge by ID."""
+        if not self._driver:
+            raise ConnectionError("Not connected")
+        
+        with self._driver.session() as session:
+            result = session.run(
+                "MATCH ()-[r {id: $id}]->() RETURN r, type(r) as rel_type, startNode(r).id as source, endNode(r).id as target",
+                {"id": str(edge_id)}
+            )
+            record = result.single()
+            if not record:
+                raise AdapterError(f"Edge {edge_id} not found")
+            
+            edge_data = dict(record["r"])
+            return PlatialEdge(
+                source_id=NodeId(record["source"]),
+                target_id=NodeId(record["target"]),
+                edge_type=EdgeType[record["rel_type"]],
+                weight=edge_data.get("weight", 1.0)
+            )
+    
+    def delete_edge(self, edge_id: EdgeId) -> None:
+        """Delete an edge by ID."""
+        if not self._driver:
+            raise ConnectionError("Not connected")
+        
+        with self._driver.session() as session:
+            session.run(
+                "MATCH ()-[r {id: $id}]->() DELETE r",
+                {"id": str(edge_id)}
+            )
+    
+    def query_nodes(self, **criteria) -> Iterator[PlatialNode]:
+        """Query nodes by criteria."""
+        if not self._driver:
+            raise ConnectionError("Not connected")
+        
+        # Build dynamic query based on criteria
+        where_clauses = []
+        params = {}
+        
+        for key, value in criteria.items():
+            if key == "node_type":
+                # Filter by label
+                where_clauses.append(f"n:{value.name}")
+            else:
+                where_clauses.append(f"n.{key} = ${key}")
+                params[key] = value
+        
+        where_clause = " AND ".join(where_clauses) if where_clauses else "true"
+        query = f"MATCH (n) WHERE {where_clause} RETURN n, labels(n) as labels"
+        
+        with self._driver.session() as session:
+            result = session.run(query, params)
+            for record in result:
+                node_data = dict(record["n"])
+                labels = record["labels"]
+                from chora.core.node import PlatialNode
+                yield PlatialNode.from_dict({
+                    "id": node_data.get("id"),
+                    "name": node_data.get("name"),
+                    "node_type": labels[0] if labels else "UNKNOWN"
+                })
+    
+    def query_edges(self, **criteria) -> Iterator[PlatialEdge]:
+        """Query edges by criteria."""
+        if not self._driver:
+            raise ConnectionError("Not connected")
+        
+        with self._driver.session() as session:
+            result = session.run(
+                "MATCH ()-[r]->() RETURN r, type(r) as rel_type, startNode(r).id as source, endNode(r).id as target"
+            )
+            for record in result:
+                edge_data = dict(record["r"])
+                
+                # Filter by criteria
+                if "edge_type" in criteria:
+                    if record["rel_type"] != criteria["edge_type"].name:
+                        continue
+                
+                yield PlatialEdge(
+                    source_id=NodeId(record["source"]),
+                    target_id=NodeId(record["target"]),
+                    edge_type=EdgeType[record["rel_type"]],
+                    weight=edge_data.get("weight", 1.0)
+                )
+
