@@ -14,17 +14,18 @@ __all__ = [
     "InMemoryAdapter",
 ]
 
-# Optional adapters loaded on demand
-def get_neo4j_adapter():
-    """Get Neo4j adapter (requires neo4j package)."""
+try:
     from chora.adapters.neo4j import Neo4jAdapter
-    return Neo4jAdapter
+    __all__.append("Neo4jAdapter")
+except ImportError:
+    pass
 
-
-def get_postgis_adapter():
-    """Get PostGIS adapter (requires psycopg/geoalchemy2)."""
+# Lazy loaders for other optional adapters
+try:
     from chora.adapters.postgis import PostGISAdapter
-    return PostGISAdapter
+    __all__.append("PostGISAdapter")
+except ImportError:
+    pass
 
 
 def get_rdf_adapter():

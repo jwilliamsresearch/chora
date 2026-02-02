@@ -1,64 +1,78 @@
-# Chora
+# Chora: Platial Modelling Library
 
-**A Python library for place-based modelling in geospatial systems**
+> **"Place is not a location."**
 
-Chora represents place as an emergent, relational, and temporal structure derived from human encounters with spatial extents, preserving uncertainty and provenance throughout.
+**Chora** is a Python library for modelling the human experience of place. It moves beyond standard GIS (which handles geometry and location) to handle *platial* concepts: familiarity, affect, routine, meaning, and emergence.
 
-## Installation
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Status: Alpha](https://img.shields.io/badge/Status-Alpha-orange)](https://github.com/jameswilliams/chora)
+
+---
+
+## 📚 The Book of Chora
+
+Documentation is organised as a progressive guide to platial modelling.
+
+| Chapter | Description |
+|---------|-------------|
+| **1. [Theory](docs/theory.md)** | Why standard GIS fails at "Place". The theory of emergent place. |
+| **2. [Getting Started](docs/getting_started.md)** | Installation and your first "Hello World" model. |
+| **3. [Core Concepts](docs/core_concepts.md)** | Agents, Encounters, Meaning, and the Platial Graph. |
+| **4. [Derivation](docs/derivation.md)** | How place emerges from raw data (GPS -> Encounter -> Place). |
+| **5. [Querying](docs/queries.md)** | Asking questions: "Where does Alice feel at home?" |
+| **6. [API Reference](docs/api_reference.md)** | Technical manual for all classes and functions. |
+
+---
+
+## 🚀 Quick Start
 
 ```bash
+# Install
 pip install chora
+
+# or for development
+git clone https://github.com/jameswilliams/chora.git
+cd chora
+pip install -e ".[dev]"
 ```
 
-For development:
-```bash
-pip install chora[dev]
-```
-
-## Core Concepts
-
-- **Agent** — an entity with situated experience
-- **SpatialExtent** — weakly semanticised spatial support  
-- **Encounter** — spatio-temporal relation between agent and extent
-- **Context** — situational modifiers (temporal, social, purposive)
-- **Practice** — emergent, patterned structures over encounters
-- **Affect** — experiential response distributions
-- **Familiarity** — evolving state variable
-- **Liminality** — conditional, transitional quality
-- **Meaning** — structured symbolic interpretation
-
-**Place is not a primitive** — it emerges as a subgraph from the intersection of these concepts.
-
-## Quick Start
+### The "Hello Place" Example
 
 ```python
-from chora.core import Agent, SpatialExtent, Encounter, PlatialGraph
-from chora.derive import extract_place
-from datetime import datetime
+from chora.core import PlatialGraph, Agent, SpatialExtent, Encounter, PlatialEdge
+from chora.derive import update_familiarity
 
-# Create entities
-walker = Agent.individual("Alice")
-park = SpatialExtent.from_bounds(-0.13, 51.50, -0.12, 51.51, "Hyde Park")
+# 1. Create the world
+graph = PlatialGraph("My World")
+alice = Agent.individual("Alice")
+park = SpatialExtent.from_bounds(-0.1, 51.5, -0.09, 51.51, name="Hyde Park")
 
-# Record an encounter
-encounter = Encounter(
-    agent_id=walker.id,
-    extent_id=park.id,
-    start_time=datetime(2024, 6, 15, 10, 0),
-    end_time=datetime(2024, 6, 15, 11, 30),
-    activity="walking"
-)
-
-# Build graph and extract emergent place
-graph = PlatialGraph("London Walks")
-graph.add_node(walker)
+graph.add_node(alice)
 graph.add_node(park)
-graph.add_node(encounter)
 
-place = extract_place(graph, park.id, walker.id)
-print(f"Character: {place.character}")
+# 2. Alice visits the park (An Encounter)
+visit = Encounter(alice.id, park.id, start_time=..., end_time=...)
+graph.add_node(visit)
+graph.add_edge(PlatialEdge.participates_in(alice.id, visit.id))
+
+# 3. Derive Familiarity (Theory in Action)
+# Familiarity is not set manually; it is derived from history!
+fam = update_familiarity(graph, visit)
+print(f"Alice's familiarity with Park: {fam.value:.2f}")
 ```
 
-## License
+## 🧩 Examples
 
-MIT
+See the [`examples/`](examples/README.md) directory for full scripts:
+- **[Real Data]** `load_gpx_traces.py` — Turn GPS logs into meaningful places.
+- **[Simulation]** `urban_mobility.py` — Simulating city-wide habits.
+- **[Analysis]** `practice_detection.py` — Finding "Commutes" and "Rituals".
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and development process.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

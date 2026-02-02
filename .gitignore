@@ -1,3 +1,51 @@
+# Python
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+**/*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.idea/
+.vscode/
+
+# Testing
+.pytest_cache/
+.hypothesis/
+coverage.xml
+*.cover
+.coverage
+
+# Documentation
+docs/_build/
+
+# Project
+summary.md
 about.md
 spec.md
-summary.md
+# Keep examples and docs committed

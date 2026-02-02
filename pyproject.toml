@@ -55,9 +55,9 @@ dev = [
     "ruff>=0.1.0",
 ]
 docs = [
-    "sphinx>=7.0",
-    "sphinx-rtd-theme>=2.0",
-    "myst-parser>=2.0",
+    "mkdocs>=1.5.0",
+    "mkdocs-material>=9.5.0",
+    "mkdocstrings[python]>=0.24.0",
 ]
 all = [
     "chora[neo4j,postgis,rdf,dev,docs]",
