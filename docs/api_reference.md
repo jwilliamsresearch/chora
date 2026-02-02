@@ -1,6 +1,6 @@
 # API Reference
 
-Complete reference for the Chora library, auto-generated using mkdocstrings.
+Complete reference for the Chora library.
 
 ## Core Module
 
@@ -21,148 +21,64 @@ Complete reference for the Chora library, auto-generated using mkdocstrings.
         - PracticeType
       show_source: false
 
+### Spatial Extent
+::: chora.core.spatial_extent
+    options:
+      members:
+        - SpatialExtent
+      show_source: false
+
+### Agent
+::: chora.core.agent
+    options:
+      members:
+        - Agent
+      show_source: false
+
 ### Temporal Functions
 ::: chora.core.temporal
     options:
-      members:
-        - TimeInterval
-        - TemporalValidity
-        - exponential_decay
-        - linear_decay
+      show_source: false
 
-### Uncertainty & Probability
+### Uncertainty
 ::: chora.core.uncertainty
     options:
-      members:
-        - ConfidenceInterval
-        - UncertaintyValue
-        - GaussianDistribution
-        - CategoricalDistribution
-
-### Provenance Tracking
-::: chora.core.provenance
-    options:
-      members:
-        - Provenance
-        - ProvenanceChain
-
----
-
-## Entities
-
-### Agent
-::: chora.core.agent.Agent
-
-### SpatialExtent
-::: chora.core.extent.SpatialExtent
-
-### Encounter
-::: chora.core.encounter.Encounter
-
-### Familiarity
-::: chora.core.familiarity.Familiarity
-
-### Affect
-::: chora.core.affect.Affect
-
-### Practice
-::: chora.core.practice.Practice
+      show_source: false
 
 ---
 
 ## Derivation Module
 
-### Familiarity
-::: chora.derive.familiarity
+::: chora.derive
     options:
-      members:
-        - update_familiarity
-        - compute_decay
-
-### Place Extraction
-::: chora.derive.place
-    options:
-      members:
-        - extract_place
-        - EmergentPlace
-
-### Practice Detection
-::: chora.derive.practices
-    options:
-      members:
-        - detect_practices
-        - detect_routines
-        - PracticeDetectionConfig
+      show_source: false
 
 ---
 
 ## Query Module
 
-### Query Builder
-::: chora.query.queries
+::: chora.query
     options:
-      members:
-        - PlatialQuery
-        - find_familiar_places
-        - find_positive_places
-        - query_encounters
-
-### Graph Traversal
-::: chora.query.traversal
-    options:
-      members:
-        - traverse_from
-        - find_path
-        - find_connected
-
-### Similarity Measures
-::: chora.query.similarity
-    options:
-      members:
-        - place_similarity
-        - practice_similarity
+      show_source: false
 
 ---
 
 ## Adapters
 
 ### Base Adapter
-::: chora.adapters.base.GraphAdapter
+::: chora.adapters.base
+    options:
+      show_source: false
 
 ### In-Memory Adapter
-::: chora.adapters.memory.InMemoryAdapter
-
-### Neo4j Adapter
-::: chora.adapters.neo4j.Neo4jAdapter
-    options:
-      show_source: false
-
-### PostGIS Adapter
-::: chora.adapters.postgis.PostGISAdapter
+::: chora.adapters.memory
     options:
       show_source: false
 
 ---
 
-## Server Module
+## CLI
 
-### FastAPI Application
-::: chora.server.app
+::: chora.cli
     options:
       show_source: false
-
-### API Endpoints
-::: chora.server.api
-    options:
-      show_source: false
-
----
-
-## Embeddings Module
-
-### Local Embedder
-::: chora.embeddings.local
-    options:
-      members:
-        - LocalEmbedder
-        - get_embedding_model

@@ -48,8 +48,6 @@ nav:
   - Derivation: derivation.md
   - Querying: queries.md
   - API Reference: api_reference.md
-  - Development:
-      - Contributing: ../CONTRIBUTING.md
 
 markdown_extensions:
   - pymdownx.highlight:
