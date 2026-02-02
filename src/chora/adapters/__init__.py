@@ -27,6 +27,12 @@ try:
 except ImportError:
     pass
 
+try:
+    from chora.adapters.redis import RedisAdapter
+    __all__.append("RedisAdapter")
+except ImportError:
+    pass
+
 
 def get_rdf_adapter():
     """Get RDF adapter (requires rdflib)."""

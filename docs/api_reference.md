@@ -107,3 +107,27 @@ adapter.save_graph(graph)
 
 ### `PostGISAdapter`
 Connects to PostgreSQL/PostGIS (Stub).
+
+---
+
+## Server Module (`chora.server`)
+
+### `create_app()`
+FastAPI application factory. Configures lifespan events and middleware.
+
+### Endpoints
+- **POST** `/agents/`: Create new agent.
+- **POST** `/encounters/`: Log space-time interaction.
+- **GET** `/places/{agent}/{extent}`: Derive place familiarity.
+- **WS** `/ws/stream`: Real-time event stream.
+- **POST** `/vectors/embed`: Get text embeddings (Real).
+
+---
+
+## Embeddings Module (`chora.embeddings`)
+
+### `get_embedding_model()`
+Returns the singleton `LocalEmbedder` (uses `sentence-transformers`).
+
+### `Embedder` (Protocol)
+- `embed_text(text: str) -> List[float]`

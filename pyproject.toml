@@ -59,8 +59,15 @@ docs = [
     "mkdocs-material>=9.5.0",
     "mkdocstrings[python]>=0.24.0",
 ]
+server = [
+    "fastapi>=0.100.0",
+    "uvicorn[standard]>=0.20.0",
+    "redis>=5.0.0",
+    "h3>=3.7.0",
+    "sentence-transformers>=2.2.0",
+]
 all = [
-    "chora[neo4j,postgis,rdf,dev,docs]",
+    "chora[neo4j,postgis,rdf,dev,docs,server]",
 ]
 
 [project.urls]
