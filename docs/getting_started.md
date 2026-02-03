@@ -68,4 +68,4 @@ print(f"Encounters: {place.encounter_count}")
 
 - [Core Concepts](core_concepts.md) — Understanding domain objects
 - [Derivation Operators](derivation.md) — Transforming data
-- [Examples](../examples/) — Full working examples
+- [Examples](https://github.com/jameswilliamsresearch/chora/tree/master/examples) — Full working examples

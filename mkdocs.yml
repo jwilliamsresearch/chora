@@ -57,6 +57,9 @@ nav:
       - Detecting Routines: guides/practice-detection.md
       - Visualization: guides/visualization.md
       - H3 Indexing: guides/h3-indexing.md
+      - Vibe Search: guides/vibe-search.md
+      - LLM Narratives: guides/llm-integration.md
+      - Streaming: guides/streaming.md
   - Derivation: derivation.md
   - Querying: queries.md
   - API Reference: api_reference.md

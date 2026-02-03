@@ -190,7 +190,7 @@ hide:
   </div>
   
   <div class="install-box">
-    <code>pip install chora</code>
+    <code>pip install chora-geo</code>
   </div>
 </div>
 

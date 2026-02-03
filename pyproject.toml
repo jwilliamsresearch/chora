@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "chora"
+name = "chora-geo"
 version = "0.1.0"
 description = "A platial modelling library for representing human experience of place"
 readme = "README.md"

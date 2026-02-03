@@ -47,7 +47,7 @@ Standard tools ask: *"What is at Lat/Lon 51.5, -0.1?"*
 
 ### Installation
 ```bash
-pip install chora
+pip install chora-geo
 ```
 
 ### The "Hello Place" API
